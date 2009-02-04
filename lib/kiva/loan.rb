@@ -8,15 +8,15 @@ module Kiva
       attrs = args.first if args.first.is_a?(Hash)
       
       # Cycle through each pair
-      # Creating accessor if necessary
+      # Creating reader if necessary
       # Setting value passed on args
       attrs.each_pair do |k,v|
         unless self.respond_to?(k.to_sym)
           self.class.class_eval do
-            attr_accessor k
+            attr_reader k
           end
         end
-        self.send("#{k.to_s}=", v)
+        instance_variable_set("@#{k.to_s}", v)
       end
     end
     

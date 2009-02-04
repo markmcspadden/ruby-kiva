@@ -38,9 +38,8 @@ describe Kiva::Loan do
       @loan.loan_amount.should == 1050
     end
     
-    it "should set the loan ammount after initialization" do
-      @loan.loan_amount = 1150
-      @loan.loan_amount.should == 1150
+    it "should NOT set the loan ammount after initialization (Kiva data is currently read only)" do
+      lambda{@loan.loan_amount = 1150}.should raise_error(NoMethodError)
     end
   end # attributes
   
