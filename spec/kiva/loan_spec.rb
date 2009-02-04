@@ -24,6 +24,27 @@ end
 
 describe Kiva::Loan do
   include LoanSpecHelper
+
+  describe "attributes" do
+    before(:each) do
+      @loan = Kiva::Loan.new(:status => "paid", :loan_amount => 1050)
+    end
+    
+    it "should get the status attribute set during initialization" do
+      @loan.status.should == "paid"
+    end
+    
+    it "should get the loan ammount" do
+      @loan.loan_amount.should == 1050
+    end
+    
+    it "should set the loan ammount after initialization" do
+      @loan.loan_amount = 1150
+      @loan.loan_amount.should == 1150
+    end
+  end # attributes
+  
+
   
   describe "search" do    
     before(:each) do
