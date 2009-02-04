@@ -21,15 +21,15 @@ module Kiva
     end
     
     class << self
-      
       # Search the Loans on Kiva
       # === Accepted Parameters
       # * :q - a string to query based on
       # * :status - the payment status: 'fundraising', 'funded', 'in_repayment', 'paid', 'defaulted'
+      # * all the others should work but haven't been verified
       # === Returns
       # Hash
-      # * paging - total, page_size, pages, page
-      # * loans
+      # * paging - Hash with keys: total, page_size, pages, page
+      # * loans - Array of Hashes with keys cooresponding to Kiva
       def search(params = {})
         params_string_array = []
         params.each_pair { |k,v| params_string_array << "#{k}=#{v}" }
@@ -41,9 +41,13 @@ module Kiva
         results = JSON.parse(response.body)
       end
       
-      # The loans portion of the search 
+      # Produce Kiva::Loan objects from the search 
       def search_results(params = {})
-        search(params)["loans"]
+        loans = []
+        search(params)["loans"].each do |loan|
+          loans << Kiva::Loan.new(loan)
+        end
+        loans
       end
     end
     

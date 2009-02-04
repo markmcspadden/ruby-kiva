@@ -43,8 +43,6 @@ describe Kiva::Loan do
     end
   end # attributes
   
-
-  
   describe "search" do    
     before(:each) do
       @response = mock("response", :body => "{}")
@@ -77,12 +75,19 @@ describe Kiva::Loan do
   end # search
   
   describe "search results" do
-    it "should get only the loans" do
+    before(:each) do
       Kiva::Loan.should_receive(:search).with(:q => "farm").and_return(search_results_raw)
       
-      results = Kiva::Loan.search_results(:q => "farm")
-      
-      results.should == search_results_raw["loans"]
+      @results = Kiva::Loan.search_results(:q => "farm")
+    end
+    it "should ignore the paging details" do      
+      @results.should_not include(search_results_raw["paging"])
+    end
+    it "should get loans that are of type Kiva::Loan" do
+      @results.first.class.to_s.should == "Kiva::Loan"
+    end
+    it "should handle a raw search result with a loans entry" do
+      pending "not yet implemented"
     end
   end # search results
   
