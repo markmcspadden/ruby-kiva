@@ -6,9 +6,29 @@ feel free to email me if you want to help/contribute/pursue a hostile takeover ;
 Mark McSpadden
 markmcspadden@gmail.com
 
+=== Requirements
+
+  json
+
+
+=== Installation
+
+Run the following if you haven't already:
+  gem sources -a http://gems.github.com
+
+Install the gem(s):
+  sudo gem install markmcspadden-ruby-kiva
+
+
 === Examples
-Kiva::Loan.search(:q => "farming", :status => "fundraising")
-  #=> {"paging" => {"total" => 7, "page_size" => 20, "pages" => 1, "page" => 1},
-        "loans" => [{ loan 1 attributes },{ loan 2 attributes }]}
-Kiva::Loan.search_results(:q => "fertilizer", :status => "paid") 
-  #=> [#<Kiva::Loan:0x14b9ca8 @id=77220, @sector="Agriculture", @borrower_count=1 ... >, #<Kiva::Loan ... >]
+
+  Kiva::Loan.search(:q => "farming", :status => "fundraising")
+    #=> {"paging" => {"total" => 7, "page_size" => 20, "pages" => 1, "page" => 1},
+          "loans" => [{ loan 1 attributes },{ loan 2 attributes }]}
+  Kiva::Loan.search_results(:q => "fertilizer", :status => "paid") 
+    #=> [#<Kiva::Loan:0x14b9ca8 @id=77220, @sector="Agriculture", @borrower_count=1 ... >, #<Kiva::Loan ... >]
+
+  
+=== More Info about the Kiva API
+
+http://build.kiva.org

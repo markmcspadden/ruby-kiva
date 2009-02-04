@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-02-04}
   s.description = %q{A Ruby wrapper for the Kiva API}
   s.email = %q{markmcspadden@gmail.com}
-  s.files = ["VERSION.yml", "lib/kiva", "lib/kiva/loan.rb", "lib/kiva.rb", "spec/kiva", "spec/kiva/loan_spec.rb", "spec/spec_helper.rb"]
+  s.files = ["VERSION.yml", "lib/kiva", "lib/kiva/loan.rb", "lib/kiva.rb", "lib/ruby-kiva.rb", "spec/kiva", "spec/kiva/loan_spec.rb", "spec/spec_helper.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/markmcspadden/ruby-kiva}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
