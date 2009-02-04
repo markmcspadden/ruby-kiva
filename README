@@ -5,3 +5,10 @@ feel free to email me if you want to help/contribute/pursue a hostile takeover ;
 
 Mark McSpadden
 markmcspadden@gmail.com
+
+=== Examples
+Kiva::Loan.search(:q => "farming", :status => "fundraising")
+  #=> {"paging" => {"total" => 7, "page_size" => 20, "pages" => 1, "page" => 1},
+        "loans" => [{ loan 1 attributes },{ loan 2 attributes }]}
+Kiva::Loan.search_results(:q => "fertilizer", :status => "paid") 
+  #=> [#<Kiva::Loan:0x14b9ca8 @id=77220, @sector="Agriculture", @borrower_count=1 ... >, #<Kiva::Loan ... >]
